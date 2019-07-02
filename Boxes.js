@@ -6,15 +6,11 @@ function Box(canvas, randomX) {
 	this.x = randomX;
 	this.y = this.canvas.height;
 	this.velocity = 2;
-	this.direction = 0;
+	this.direction = 1;
 	this.color = 'green';
 	this.width = 20;
 	this.height = 20;
-/*
-	var ramdomBox = ['coin','poison'];
-	var firstRandomElement = _.shuffle(randomBox)[0];
 
-	var box = new Box(firstRandomElement);*/
 };
 
 Box.prototype.move = function() {

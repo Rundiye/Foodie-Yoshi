@@ -3,18 +3,20 @@
 function Player(canvas) {
 	this.canvas = canvas;
 	this.ctx = this.canvas.getContext('2d');
-	this.height = 40;
-	this.width = 40;
-	this.x = 40;   
-	this.y = (this.canvas.width/2) - this.width / 2;
+	this.height = 50;
+	this.width = 50;
+	this.x = (this.canvas.width/2);;   
+	this.y = (this.canvas.height) - (this.height /2) - this.height;
 	this.lives = 3;
-	this.direction = 0;
+	this.direction = 1;
+	this.velocity = 5;
 	this.color = 'orange';
-	this.coins = 0;
+	
 };
 
 Player.prototype.move = function() {
-	this.x = this.x + this.direction;
+	this.x = this.x + this.direction * this.velocity;
+
 };
 
 Player.prototype.draw = function() {
@@ -23,7 +25,7 @@ Player.prototype.draw = function() {
 };
 
 Player.prototype.setDirection = function(newDirection) {
-	this.direction = newDirection;
+	this.direction =  newDirection;
 };
 
 

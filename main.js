@@ -12,7 +12,7 @@ function main() {
   function createSplashScreen(){
 		
 		var splashScreen = buildDom(`
-      <section>
+      <section class= "screen">
         <h1>Foodie Yoshi</h1>
         <h3>Instructions</h3>
 				<p>1- Collect 3 Coins to Save Yoshi!</p>
@@ -28,31 +28,40 @@ function main() {
   function createGameScreen(){
         
     var gameScreen = buildDom(`
-      <section>
+      <section class= "screen">
         <canvas class="canvas" width="750" height="900"></canvas>
       </section>
     `);
 		
-		var canvasElement = document.querySelector('canvas');
-    var gameInstance = new Game(canvasElement);
+		var canvas = document.querySelector('canvas');
+    var gameInstance = new Game(canvas);
     gameInstance.gameOverCallback(createGameOverScreen);
         
 		gameInstance.startGame();
+
+		document.addEventListener('keyup', function(event){
+			gameInstance.player.setDirection(0);
+		});
 		
-    document.addEventListener('keyright', function(event){
+    document.addEventListener('keydown', function(event){
+		
     	if(event.key === 'ArrowRight'){
     		gameInstance.player.setDirection(1);
     		} else if(event.key === 'ArrowLeft'){
  				gameInstance.player.setDirection(-1);
-    		}
-  	});
-        
+				};
+			
+		});
+
   };
-        
+	
+	
+
+
   function createGameOverScreen(){
 
     var gameOverScreen = buildDom(`
-      <section>
+      <section class= "screen">
       	<h1>Game Over</h1>
       	<button>Restart</button>
       </section>

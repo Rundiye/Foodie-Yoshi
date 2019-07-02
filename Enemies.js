@@ -4,16 +4,17 @@ function Enemy(canvas, randomX) {
 	this.canvas = canvas;
 	this.ctx = this.canvas.getContext('2d');
 	this.x = randomX;
-	this.y = this.canvas.height;
-	this.velocity = 3;
-	this.direction = 0;
+	this.y = 0;
+	this.velocity = 6;
+	this.direction = 1;
 	this.color = 'blue';
-	this.width = 20;
-	this.height = 20;
+	this.width = 30;
+	this.height = 30;
 }; 
 
 Enemy.prototype.move = function() {
 	this.y = this.y + this.direction * this.velocity;
+	/*this.x = this.x + 5;*/
 };
 
 Enemy.prototype.draw = function() {

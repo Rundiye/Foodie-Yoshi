@@ -2,12 +2,13 @@
 
 function Game(canvas) {
 	this.player = null;
-	this.boxes = null;
+	/*this.boxes = null;*/
 	this.enemies = [];
 	this.isGameOver = false;
 	this.canvas = canvas;
 	this.ctx = this.canvas.getContext('2d');
 	this.onGameOver = null;
+	this.coins = 0;
 };
 
 Game.prototype.startGame = function() {
@@ -19,19 +20,15 @@ Game.prototype.startGame = function() {
 			var randomX = Math.random() * this.canvas.height - 20;   
 			var newEnemy = new Enemy(this.canvas, randomX);
 			this.enemies.push(newEnemy);
-/*
-			var ramdomBox = ['coin','poison'];
-			var newBox = new Box(this.canvas, randomX, firstRandomElement);
-			var firstRandomElement = _.shuffle(randomBox)[0];
 
 			
-			this.boxes.push(newBox);*/
 		};
-		
+
+
 		this.update();
 		this.clear(); 
 		this.draw();
-		/*this.checkCollisionsEnemy();*/
+		this.checkCollisions();
 		if(!this.isGameOver) {
 			requestAnimationFrame(loop);
 		} else {
@@ -63,14 +60,14 @@ Game.prototype.draw = function() {
 	});*/
 
 };
-/*
-Game.prototype.checkCollisionsEnemy = function() {
+
+Game.prototype.checkCollisions = function() {
 	this.enemies.forEach((enemy, index) => {
 
-		var rightLeft = this.player.y + this.player.height >= enemy.y;
-		var leftRight = this.player.y <= enemy.y + enemy.height;
-		var bottomTop = this.player.x + this.player.width >= enemy.x;
-		var topBottom = this.player.x <= enemy.x + enemy.width;
+		var rightLeft = this.player.x + this.player.width >= enemy.x;
+		var leftRight = this.player.x <= enemy.x + enemy.width;
+		var bottomTop = this.player.y + this.player.height >= enemy.y;
+		var topBottom = this.player.y <= enemy.y + enemy.height;
 
 		if (rightLeft && leftRight && bottomTop && topBottom){
 			this.enemies.splice(index, 1);
@@ -85,7 +82,7 @@ Game.prototype.checkCollisionsEnemy = function() {
 
 };
 
-*/
+
 
 Game.prototype.gameOverCallback = function(callback) {
 	this.onGameOver = callback;
