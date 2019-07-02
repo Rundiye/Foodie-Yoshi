@@ -2,13 +2,14 @@
 
 function Game(canvas) {
 	this.player = null;
-	this.boxes = null;
+	this.boxes = [];
 	this.enemies = [];
 	this.isGameOver = false;
 	this.canvas = canvas;
 	this.ctx = this.canvas.getContext('2d');
 	this.onGameOver = null;
 	this.coins = 0;
+	this.cont = 0;
 };
 
 Game.prototype.startGame = function() {
@@ -16,15 +17,18 @@ Game.prototype.startGame = function() {
 
 	var loop = () => {    
 
+		this.cont++;
 		if(Math.random() > 0.99) {
 			var randomX = Math.random() * this.canvas.height - 20;   
 			var newEnemy = new Enemy(this.canvas, randomX);
 			this.enemies.push(newEnemy);
 		};
-		if(Math.random() > 0.99) {
+		if(this.cont===300) {
+
 		var randomX = Math.random() * this.canvas.height - 20;   
 		var newBox = new Box(this.canvas, randomX);
 		this.boxes.push(newBox);
+		this.cont = 0;
 		};
 		
 
@@ -51,6 +55,9 @@ Game.prototype.update = function() {
 	this.enemies.forEach(function(enemy) {
 		enemy.move();
 	});
+	this.boxes.forEach(function(box){
+		box.move();
+	});
 };
 
 Game.prototype.clear = function() {
@@ -62,9 +69,9 @@ Game.prototype.draw = function() {
 	this.enemies.forEach(function(enemy) {
 		enemy.draw();
 	});
-	/*this.boxes.forEach(function(box){
+	this.boxes.forEach(function(box){
 		box.draw();
-	});*/
+	});
 
 };
 

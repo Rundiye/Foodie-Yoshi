@@ -4,14 +4,12 @@ function Box(canvas, randomX) {
 	this.canvas = canvas;
 	this.ctx = this.canvas.getContext('2d');
 	this.x = randomX;
-	this.y = this.canvas.height;
-	this.velocity = 2;
+	this.y = 0;
+	this.velocity = 3;
 	this.direction = 1;
 	this.color = 'green';
-	this.width = 20;
-	this.height = 20;
-
-
+	this.width = 50;
+	this.height = 50;
 };
 
 Box.prototype.move = function() {
@@ -22,7 +20,7 @@ Box.prototype.draw = function() {
 	
 	var pizza = new Image();
   this.type === 'pizza';
-  egg.src = 'images/pizza.png';
+  pizza.src = 'images/pizza.png';
   
   this.ctx.drawImage(pizza, this.x, this.y, this.width, this.height);
 };

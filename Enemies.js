@@ -23,8 +23,4 @@ Enemy.prototype.draw = function() {
   egg.src = 'images/egg.png';
   
   this.ctx.drawImage(egg, this.x, this.y, this.width, this.height);
-/*
-
-	this.ctx.fillStyle = this.color;
-	this.ctx.fillRect(this.x, this.y, this.width, this.height);*/
 };
