@@ -2,7 +2,7 @@
 
 function Game(canvas) {
 	this.player = null;
-	/*this.boxes = null;*/
+	this.boxes = null;
 	this.enemies = [];
 	this.isGameOver = false;
 	this.canvas = canvas;
@@ -20,9 +20,13 @@ Game.prototype.startGame = function() {
 			var randomX = Math.random() * this.canvas.height - 20;   
 			var newEnemy = new Enemy(this.canvas, randomX);
 			this.enemies.push(newEnemy);
-
-			
 		};
+		if(Math.random() > 0.99) {
+		var randomX = Math.random() * this.canvas.height - 20;   
+		var newBox = new Box(this.canvas, randomX);
+		this.boxes.push(newBox);
+		};
+		
 
 
 		this.update();
@@ -33,7 +37,10 @@ Game.prototype.startGame = function() {
 			requestAnimationFrame(loop);
 		} else {
 			this.onGameOver();
-		}
+		};
+
+
+	
 		
 	};
 	loop();
@@ -80,6 +87,14 @@ Game.prototype.checkCollisions = function() {
 	
 	return true || false 
 
+};
+
+	
+Game.prototype.checkScore = function(){
+	
+
+	var scoreText = document.querySelector('#score');
+  scoreText.innerHTML = `Score = ${this.score}`;
 };
 
 

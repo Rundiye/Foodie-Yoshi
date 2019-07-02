@@ -11,6 +11,7 @@ function Box(canvas, randomX) {
 	this.width = 20;
 	this.height = 20;
 
+
 };
 
 Box.prototype.move = function() {
@@ -19,6 +20,9 @@ Box.prototype.move = function() {
 
 Box.prototype.draw = function() {
 	
-	this.ctx.fillStyle = this.color;
-	this.ctx.fillRect(this.x, this.y, this.width, this.height);
+	var pizza = new Image();
+  this.type === 'pizza';
+  egg.src = 'images/pizza.png';
+  
+  this.ctx.drawImage(pizza, this.x, this.y, this.width, this.height);
 };

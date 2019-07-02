@@ -12,7 +12,7 @@ function main() {
   function createSplashScreen(){
 		
 		var splashScreen = buildDom(`
-      <section class= "screen">
+      <section>
         <h1>Foodie Yoshi</h1>
         <h3>Instructions</h3>
 				<p>1- Collect 3 Coins to Save Yoshi!</p>
@@ -29,8 +29,10 @@ function main() {
         
     var gameScreen = buildDom(`
       <section class= "screen">
-        <canvas class="canvas" width="750" height="900"></canvas>
-      </section>
+				<canvas class="canvas" width="750" height="900">
+				</canvas>
+				<p id="score"> Score : 0</p>
+			</section>
     `);
 		
 		var canvas = document.querySelector('canvas');
@@ -61,7 +63,7 @@ function main() {
   function createGameOverScreen(){
 
     var gameOverScreen = buildDom(`
-      <section class= "screen">
+      <section>
       	<h1>Game Over</h1>
       	<button>Restart</button>
       </section>

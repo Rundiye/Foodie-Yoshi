@@ -35,7 +35,12 @@ p {
 
 
 .canvas {
-	border: 1px solid red;
+	border: 1px solid black;
 };
 
-
+.screen {
+	display: flex;
+	align-self: center;
+	align-items: center;
+	justify-content: center;
+};

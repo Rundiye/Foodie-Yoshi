@@ -8,8 +8,8 @@ function Enemy(canvas, randomX) {
 	this.velocity = 6;
 	this.direction = 1;
 	this.color = 'blue';
-	this.width = 30;
-	this.height = 30;
+	this.width = 50;
+	this.height = 50;
 }; 
 
 Enemy.prototype.move = function() {
@@ -18,6 +18,13 @@ Enemy.prototype.move = function() {
 };
 
 Enemy.prototype.draw = function() {
+	var egg = new Image();
+  this.type === 'egg';
+  egg.src = 'images/egg.png';
+  
+  this.ctx.drawImage(egg, this.x, this.y, this.width, this.height);
+/*
+
 	this.ctx.fillStyle = this.color;
-	this.ctx.fillRect(this.x, this.y, this.width, this.height)
+	this.ctx.fillRect(this.x, this.y, this.width, this.height);*/
 };
