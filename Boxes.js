@@ -1,6 +1,6 @@
 'use strict';
 
-function Box(canvas, randomX) {
+function Box(canvas, randomX, isPoison) {
 	this.canvas = canvas;
 	this.ctx = this.canvas.getContext('2d');
 	this.x = randomX;
@@ -8,8 +8,9 @@ function Box(canvas, randomX) {
 	this.velocity = 3;
 	this.direction = 1;
 	this.color = 'green';
-	this.width = 50;
-	this.height = 50;
+	this.width = 60;
+	this.height = 60;
+	this.isPoison = isPoison;
 };
 
 Box.prototype.move = function() {
@@ -17,7 +18,6 @@ Box.prototype.move = function() {
 };
 
 Box.prototype.draw = function() {
-	
 	var pizza = new Image();
   this.type === 'pizza';
   pizza.src = 'images/pizza.png';

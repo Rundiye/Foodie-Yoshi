@@ -5,11 +5,15 @@ function Game(canvas) {
 	this.boxes = [];
 	this.enemies = [];
 	this.isGameOver = false;
+	this.isWin = false;
 	this.canvas = canvas;
 	this.ctx = this.canvas.getContext('2d');
 	this.onGameOver = null;
+	this.onWin = null;
 	this.coins = 0;
 	this.cont = 0;
+	this.coinScore = 0;
+	this.liveCount = 0;
 };
 
 Game.prototype.startGame = function() {
@@ -23,29 +27,32 @@ Game.prototype.startGame = function() {
 			var newEnemy = new Enemy(this.canvas, randomX);
 			this.enemies.push(newEnemy);
 		};
-		if(this.cont===300) {
+		if(this.cont===200) {
 
 		var randomX = Math.random() * this.canvas.height - 20;   
-		var newBox = new Box(this.canvas, randomX);
+		var isPoison = Math.random() > 0.4 ? true : false;
+		var newBox = new Box(this.canvas, randomX, isPoison);
 		this.boxes.push(newBox);
 		this.cont = 0;
 		};
 		
-
-
 		this.update();
 		this.clear(); 
 		this.draw();
 		this.checkCollisions();
+		this.checkCollisionsBox();
 		if(!this.isGameOver) {
 			requestAnimationFrame(loop);
 		} else {
 			this.onGameOver();
 		};
-
-
-	
-		
+/*
+		if(!this.isWin) {
+			requestAnimationFrame(loop);
+		} else {
+			this.onWin();
+		};
+*/
 	};
 	loop();
 };
@@ -75,6 +82,7 @@ Game.prototype.draw = function() {
 
 };
 
+
 Game.prototype.checkCollisions = function() {
 	this.enemies.forEach((enemy, index) => {
 
@@ -85,27 +93,67 @@ Game.prototype.checkCollisions = function() {
 
 		if (rightLeft && leftRight && bottomTop && topBottom){
 			this.enemies.splice(index, 1);
+
 			this.player.lives--;
+			
+			var liveScore = document.querySelector('#liveCount');
+				liveScore.innerHTML = 'Lives : '  + this.player.lives;
+
 			if(this.player.lives === 0) {
 				this.isGameOver = true;
 			}
 		};
-	});
+	});	
 	
-	return true || false 
-
 };
 
-	
-Game.prototype.checkScore = function(){
-	
 
-	var scoreText = document.querySelector('#score');
-  scoreText.innerHTML = `Score = ${this.score}`;
+Game.prototype.checkCollisionsBox = function() {
+	this.boxes.forEach((box, index) => {
+
+		var rightLeft = this.player.x + this.player.width >= box.x;
+		var leftRight = this.player.x <= box.x + box.width;
+		var bottomTop = this.player.y + this.player.height >= box.y;
+		var topBottom = this.player.y <= box.y + box.height;
+
+		if (rightLeft && leftRight && bottomTop && topBottom){
+			console.log(box.isPoison);
+
+			if(box.isPoison){
+
+				this.player.lives--;
+
+				var liveScore = document.querySelector('#liveCount');
+				liveScore.innerHTML = 'Lives : '  + this.player.lives;
+
+				if(this.player.lives === 0) {
+					this.isGameOver = true;
+				}
+
+			} else {
+				this.coins++;
+				
+				var coinCount = document.querySelector('#coinCount');
+				coinCount.innerHTML = 'Coin Score : ' + this.coins;
+
+				if(this.coinScore === 2) {
+					this.isWin = true;
+				}
+				this.boxes.splice(index, 1);
+			};
+
+			}
+		
+	});	
+	
 };
-
 
 
 Game.prototype.gameOverCallback = function(callback) {
 	this.onGameOver = callback;
+};
+
+
+Game.prototype.gameWinCallback = function(callback) {
+	this.onWin = callback;
 };

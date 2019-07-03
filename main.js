@@ -12,10 +12,10 @@ function main() {
   function createSplashScreen(){
 		
 		var splashScreen = buildDom(`
-      <section>
+      <section id = "screen">
         <h1>Foodie Yoshi</h1>
         <h3>Instructions</h3>
-				<p>1- Collect 3 Coins to Save Yoshi!</p>
+				<p>1- Collect 5 Coins to WIN!</p>
 				<p>2- Do not let the Eggs touch you!</p>
         <button>Start Game</button>
       </section>
@@ -28,18 +28,23 @@ function main() {
   function createGameScreen(){
         
     var gameScreen = buildDom(`
-      <section class= "screen">
-				<canvas class="canvas" width="750" height="900">
+      <section id = "screen">
+      <p id="coinCount"> Coin Score : 0</p>
+      <p id="liveCount"> Lives : 3</p>
+				<canvas class="canvas" width="700" height="800">
 				</canvas>
-				<p id="score"> Score : 0</p>
+				
 			</section>
     `);
+
 		
 		var canvas = document.querySelector('canvas');
     var gameInstance = new Game(canvas);
     gameInstance.gameOverCallback(createGameOverScreen);
         
-		gameInstance.startGame();
+    gameInstance.startGame();
+    
+    
 
 		document.addEventListener('keyup', function(event){
 			gameInstance.player.setDirection(0);
@@ -51,19 +56,15 @@ function main() {
     		gameInstance.player.setDirection(1);
     		} else if(event.key === 'ArrowLeft'){
  				gameInstance.player.setDirection(-1);
-				};
-			
+				};	
 		});
-
   };
 	
-	
-
 
   function createGameOverScreen(){
 
     var gameOverScreen = buildDom(`
-      <section>
+      <section id = "screen">
       	<h1>Game Over</h1>
       	<button>Restart</button>
       </section>
@@ -74,26 +75,28 @@ function main() {
   };
             
     createSplashScreen(); 
+
+  function createGameWinScreen(){
+
+    var gameWinScreen = buildDom(`
+      <section>
+      <h1>YOU WON!!</h1>
+      <button>Restart</button>
+      </section>
+      `);
+                  
+    var buttonRestart = gameWinScreen.querySelector('button');
+    buttonRestart.addEventListener('click', createGameScreen);
+    };
+              
+    createSplashScreen(); 
+    
 };
 
-window.addEventListener('load', main);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 window.addEventListener('load', main);
+
+
+
+
+

@@ -11,6 +11,7 @@ function Player(canvas) {
 	this.direction = 1;
 	this.velocity = 5;
 	this.color = 'orange';
+
 	
 };
 
