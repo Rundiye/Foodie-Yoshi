@@ -22,15 +22,15 @@ Game.prototype.startGame = function() {
 	var loop = () => {    
 
 		this.cont++;
-		if(Math.random() > 0.99) {
+		if(Math.random() > 0.98) {
 			var randomX = Math.random() * this.canvas.height - 20;   
 			var newEnemy = new Enemy(this.canvas, randomX);
 			this.enemies.push(newEnemy);
 		};
-		if(this.cont===200) {
+		if(this.cont===100) {
 
 		var randomX = Math.random() * this.canvas.height - 20;   
-		var isPoison = Math.random() > 0.4 ? true : false;
+		var isPoison = Math.random() > 0.7 ? true : false;
 		var newBox = new Box(this.canvas, randomX, isPoison);
 		this.boxes.push(newBox);
 		this.cont = 0;
@@ -41,6 +41,22 @@ Game.prototype.startGame = function() {
 		this.draw();
 		this.checkCollisions();
 		this.checkCollisionsBox();
+		/*
+		if(!this.isWin) {
+			requestAnimationFrame(loop);
+		} else {
+			this.onWin();
+		};
+	 */
+	if(this.isGameOver) {
+		this.onGameOver();
+	} else if(this.isWin) {
+		this.onWin();
+	} else {
+		requestAnimationFrame(loop);
+	};
+	
+	 /*
 		if(!this.isGameOver) {
 			requestAnimationFrame(loop);
 		} else {
@@ -101,7 +117,7 @@ Game.prototype.checkCollisions = function() {
 
 			if(this.player.lives === 0) {
 				this.isGameOver = true;
-			}
+			};
 		};
 	});	
 	
@@ -117,10 +133,9 @@ Game.prototype.checkCollisionsBox = function() {
 		var topBottom = this.player.y <= box.y + box.height;
 
 		if (rightLeft && leftRight && bottomTop && topBottom){
-			console.log(box.isPoison);
+			this.boxes.splice(index, 1);
 
 			if(box.isPoison){
-
 				this.player.lives--;
 
 				var liveScore = document.querySelector('#liveCount');
@@ -132,14 +147,15 @@ Game.prototype.checkCollisionsBox = function() {
 
 			} else {
 				this.coins++;
-				
+
+				if(this.coins === 2) {
+					this.isWin = true;
+				}
+
 				var coinCount = document.querySelector('#coinCount');
 				coinCount.innerHTML = 'Coin Score : ' + this.coins;
 
-				if(this.coinScore === 2) {
-					this.isWin = true;
-				}
-				this.boxes.splice(index, 1);
+				
 			};
 
 			}

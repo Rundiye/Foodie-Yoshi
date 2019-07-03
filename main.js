@@ -40,11 +40,14 @@ function main() {
 		
 		var canvas = document.querySelector('canvas');
     var gameInstance = new Game(canvas);
+
     gameInstance.gameOverCallback(createGameOverScreen);
+    gameInstance.gameWinCallback(createGameWinScreen);
         
     gameInstance.startGame();
     
     
+
 
 		document.addEventListener('keyup', function(event){
 			gameInstance.player.setDirection(0);
@@ -57,7 +60,8 @@ function main() {
     		} else if(event.key === 'ArrowLeft'){
  				gameInstance.player.setDirection(-1);
 				};	
-		});
+    });
+    //setTimeout(createGameWinScreen, 3000);
   };
 	
 
@@ -79,8 +83,8 @@ function main() {
   function createGameWinScreen(){
 
     var gameWinScreen = buildDom(`
-      <section>
-      <h1>YOU WON!!</h1>
+      <section id = "screen">
+      <h1>YOU WON A PIZZA!!</h1>
       <button>Restart</button>
       </section>
       `);

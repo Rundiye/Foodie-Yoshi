@@ -5,7 +5,7 @@ function Box(canvas, randomX, isPoison) {
 	this.ctx = this.canvas.getContext('2d');
 	this.x = randomX;
 	this.y = 0;
-	this.velocity = 3;
+	this.velocity = 5;
 	this.direction = 1;
 	this.color = 'green';
 	this.width = 60;
