@@ -14,7 +14,7 @@ function Enemy(canvas, randomX) {
 
 Enemy.prototype.move = function() {
 	this.y = this.y + this.direction * this.velocity;
-	/*this.x = this.x + 5;*/
+	this.x = this.x + 0.5;
 };
 
 Enemy.prototype.draw = function() {
