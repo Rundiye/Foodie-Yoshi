@@ -15,9 +15,18 @@ function Game(canvas) {
 	this.cont = 0;
 	this.coinScore = 0;
 	this.liveCount = 0;
+	this.startGameSong = new Audio('sounds/ringtones-super-mario-bros.mp3');
+	this.gameOverSong = new Audio('sounds/mario-bros game over.mp3');
+	this.coinSong = new Audio('sounds/mario-bros-coin.mp3');
+	this.liveSong = new Audio('sounds/mario-bros vida.mp3');
+	this.ouchYoshi = new Audio('sounds/yoshi-owowowow.mp3');
+	
+	
 };
 
 Game.prototype.startGame = function() {
+	this.startGameSong.play();
+
 	this.player = new Player(this.canvas);
 
 	var loop = () => {    
@@ -28,8 +37,7 @@ Game.prototype.startGame = function() {
 			var newEnemy = new Enemy(this.canvas, randomX);
 			this.enemies.push(newEnemy);
 		};
-		//prueba
-		//this.cont++;
+	
 		if(this.cont===200) {
 			var randomX = Math.random() * this.canvas.height - 20;   
 			var newPizza = new Pizza(this.canvas, randomX);
@@ -50,11 +58,13 @@ Game.prototype.startGame = function() {
 		this.draw();
 		this.checkCollisions();
 		this.checkCollisionsBox();
-	//
+	
 	this.checkCollisionsPizza();
 
 	if(this.isGameOver) {
 		this.onGameOver();
+		this.startGameSong.pause();
+		this.gameOverSong.play();
 	} else if(this.isWin) {
 		this.onWin();
 	} else {
@@ -117,6 +127,7 @@ Game.prototype.checkCollisions = function() {
 			this.enemies.splice(index, 1);
 
 			this.player.lives--;
+			this.ouchYoshi.play();
 			
 			var liveScore = document.querySelector('#liveCount');
 				liveScore.innerHTML = 'Lives : '  + this.player.lives;
@@ -153,6 +164,7 @@ Game.prototype.checkCollisionsBox = function() {
 
 			} else {
 				this.coins++;
+				this.coinSong.play();
 
 				if(this.coins === 7) {
 					this.isWin = true;
@@ -165,7 +177,7 @@ Game.prototype.checkCollisionsBox = function() {
 	});	
 };
 
-////p
+
 Game.prototype.checkCollisionsPizza = function() {
 	this.pizza.forEach((pizza, index) => {
 
@@ -178,6 +190,7 @@ Game.prototype.checkCollisionsPizza = function() {
 			this.pizza.splice(index, 1);
 
 			this.player.lives++;
+			this.liveSong.play();
 			
 			var liveScore = document.querySelector('#liveCount');
 				liveScore.innerHTML = 'Lives : '  + this.player.lives;
@@ -190,7 +203,6 @@ Game.prototype.checkCollisionsPizza = function() {
 	
 };
 
-///
 
 
 Game.prototype.gameOverCallback = function(callback) {

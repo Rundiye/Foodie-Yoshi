@@ -19,13 +19,14 @@ body {
 /* ---- typography ---- */
 
 body {
-	font-family: Helvetica, Arial, sans-serif;
+	font-family: Georgia, serif;
 	font-size: 16px;
 	line-height: 80%;	
 }
 h1 {
-	font-size: 6em;
-	color:greenyellow;
+	font-size: 7em;
+	color: white;;
+	margin-bottom: 100px;
 
 }
 
@@ -33,21 +34,23 @@ h2 {}
 
 h3 {
 	font-size: 2em;
-	color: grey;
+	color: white;
+	text-decoration: underline;
 }
 
 p {
- font-size: 1em;
- color:green;
+ font-size: 1.7em;
+ color: black;
 }
 
 
 .canvas {
 	border: 1px solid white;
-	background-image: url('images/Fondo-yoshi.jpg');
+	/*background-image: url('images/Fondo-yoshi.jpg');*/
 	background-size: cover;
+	background-image: url('images/nastya-friday-game-background-1.jpg')
 }
-
+/*background-image: url('images/nastya-friday-game-background-1.jpg')*/
 #screen {
 	padding: 0;
 	margin: 0;
@@ -59,9 +62,14 @@ p {
 	flex-direction: column;
 }
 
+.game-screen {
+	background-color: paleturquoise;
+}
+
 .main-page {
-	background-image:url('images/x.jpg');
-	background-size: cover;
+/*	background-image:url('images/x.jpg');
+	background-size: cover;*/
+	background-color: darkolivegreen;
 }
 .game-over {
 	background-image: url('images/game-over2.jpg');
@@ -72,11 +80,11 @@ p {
 }
 
 button {
-	font-size: 2em;
+	font-size: 1.5em;
 	color:black;
 	border-radius: 10%;
 	border-style: 2px solid white;
-	padding: 10px;
+	padding: 7px 10px;
 	margin-top: 100px;
 	background-color: white;
 
@@ -93,6 +101,26 @@ button:hover {
 
 }
 
+.score {
+	display: flex;
+	align-content: space-around;
+	justify-items: flex-start;
+	flex-direction: row;
+	font-size: 2em;
+	color: green;
+	text-decoration-style: none;
+	list-style-type: none;
+}
+
+li {
+	margin-right: 50px;
+	text-transform: uppercase;
+}
+
 .instructions {
-	
+	background-color: forestgreen	;
+	padding: 70px;
+	line-height: 20px;
+	border: 2px solid white;
+	border-style: dashed;
 }
