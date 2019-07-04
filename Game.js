@@ -166,7 +166,7 @@ Game.prototype.checkCollisionsBox = function() {
 				this.coins++;
 				this.coinSong.play();
 
-				if(this.coins === 7) {
+				if(this.coins === 1) {
 					this.isWin = true;
 				}
 

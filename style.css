@@ -19,7 +19,7 @@ body {
 /* ---- typography ---- */
 
 body {
-	font-family: Georgia, serif;
+	font-family: Courier New, Courier, monospace;
 	font-size: 16px;
 	line-height: 80%;	
 }
@@ -30,7 +30,6 @@ h1 {
 
 }
 
-h2 {}
 
 h3 {
 	font-size: 2em;
@@ -39,18 +38,17 @@ h3 {
 }
 
 p {
- font-size: 1.7em;
+ font-size: 1.2em;
  color: black;
 }
 
 
 .canvas {
 	border: 1px solid white;
-	/*background-image: url('images/Fondo-yoshi.jpg');*/
 	background-size: cover;
 	background-image: url('images/nastya-friday-game-background-1.jpg')
 }
-/*background-image: url('images/nastya-friday-game-background-1.jpg')*/
+
 #screen {
 	padding: 0;
 	margin: 0;
@@ -67,9 +65,8 @@ p {
 }
 
 .main-page {
-/*	background-image:url('images/x.jpg');
-	background-size: cover;*/
-	background-color: darkolivegreen;
+	background-image:url('images/Background-y2.jpg');
+	background-size: cover;
 }
 .game-over {
 	background-image: url('images/game-over2.jpg');
@@ -84,7 +81,7 @@ button {
 	color:black;
 	border-radius: 10%;
 	border-style: 2px solid white;
-	padding: 7px 10px;
+	padding: 7px 15px;
 	margin-top: 100px;
 	background-color: white;
 
@@ -99,6 +96,11 @@ button:hover {
 	position: absolute;
 	top: 55%;
 
+}
+
+.button-start {
+	position: absolute;
+	top: 69%;
 }
 
 .score {
@@ -118,9 +120,21 @@ li {
 }
 
 .instructions {
-	background-color: forestgreen	;
-	padding: 70px;
+	background-color: lightskyblue	;
+	padding: 10px 15px;
 	line-height: 20px;
-	border: 2px solid white;
+	border: 3px solid white;
 	border-style: dashed;
+	position: absolute;
+	top: 42%;
+}
+
+.win-screen {
+	background-color:deepskyblue;
+}
+
+.command {
+	font-weight: bold;
+	text-align: center;
+	font-size: 1.5em;
 }

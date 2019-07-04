@@ -3,7 +3,7 @@
 function Enemy(canvas, randomX) {
 	this.canvas = canvas;
 	this.ctx = this.canvas.getContext('2d');
-	this.x = randomX;
+	this.x = randomX; //p
 	this.y = 0;
 	this.velocity = 6;
 	this.direction = 1;

@@ -13,16 +13,17 @@ function main() {
 		
 		var splashScreen = buildDom(`
       <section id="screen"class="main-page">
-      <h1>Foodie Yoshi</h1> 
+    
       <section class="instructions"> 
         
         <h3>Instructions</h3>
-        <p>1- With each Surprise Box you can either lose a life or Win a Coin.</p>
-        <p>2- Do not let the Eggs touch you!</p>
-        <p>3- Earn extra Lives eating the Pizzas</p>
-        <p>4- Collect 7 Coins to WIN!</p>
+        <p>1. With each Surprise Box you can either lose a Live or Win a Coin</p>
+        <p>2. Do not let the Eggs touch you!</p>
+        <p>3. Earn extra Lives eating Pizzas</p>
+        <p>4. Collect 7 Coins to WIN!</p>
+        <p class="command"> Commands <- Left  Right -></p>
         </section>
-        <button>Start Game</button>
+        <button class="button-start">New Game</button>
       </section>
     `);
     
@@ -93,8 +94,8 @@ function main() {
   function createGameWinScreen(){
 
     var gameWinScreen = buildDom(`
-      <section id = "screen">
-      <h1>YOU WON A PIZZA!!</h1>
+      <section id = "screen" class="win-screen">
+      <img src="images/win-pic.jpg" alt="win-image">
       <button>Restart</button>
       </section>
       `);
