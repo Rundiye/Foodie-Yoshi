@@ -15,9 +15,10 @@ function main() {
       <section id = "screen">
         <h1>Foodie Yoshi</h1>
         <h3>Instructions</h3>
-        <p>1- With each Pizza you can either lose a life or Win a Coin.</p>
-        <p>Collect 5 Coins to WIN!</p>
-				<p>2- Do not let the Eggs touch you!</p>
+        <p>1- With each Surprise Box you can either lose a life or Win a Coin.</p>
+        <p>2- Do not let the Eggs touch you!</p>
+        <p>3- Earn extra Lives eating the Pizzas</p>
+        <p>4- Collect 7 Coins to WIN!</p>
         <button>Start Game</button>
       </section>
     `);

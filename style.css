@@ -11,7 +11,8 @@ html {
 body {
 	margin: 0;
 	padding: 0;
-	background-color: green;
+	background-image:url('images/x.jpg');
+	background-size: cover;
 }
 
 
@@ -42,7 +43,7 @@ p {
 
 
 .canvas {
-	border: 2px solid black;
+	border: 1px solid white;
 	background-image: url('images/Fondo-yoshi.jpg');
 	background-size: cover;
 }

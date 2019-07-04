@@ -3,6 +3,7 @@
 function Game(canvas) {
 	this.player = null;
 	this.boxes = [];
+	this.pizza = [];
 	this.enemies = [];
 	this.isGameOver = false;
 	this.isWin = false;
@@ -22,13 +23,21 @@ Game.prototype.startGame = function() {
 	var loop = () => {    
 
 		this.cont++;
-		if(Math.random() > 0.97) {
+		if(Math.random() > 0.98) {
 			var randomX = Math.random() * this.canvas.height - 20;   
 			var newEnemy = new Enemy(this.canvas, randomX);
 			this.enemies.push(newEnemy);
 		};
-		if(this.cont===100) {
+		//prueba
+		//this.cont++;
+		if(this.cont===200) {
+			var randomX = Math.random() * this.canvas.height - 20;   
+			var newPizza = new Pizza(this.canvas, randomX);
+			this.pizza.push(newPizza);
+		};
 
+		//
+		if(this.cont===300) {
 		var randomX = Math.random() * this.canvas.height - 20;   
 		var isPoison = Math.random() > 0.6 ? true : false;
 		var newBox = new Box(this.canvas, randomX, isPoison);
@@ -41,7 +50,8 @@ Game.prototype.startGame = function() {
 		this.draw();
 		this.checkCollisions();
 		this.checkCollisionsBox();
-	
+	//
+	this.checkCollisionsPizza();
 
 	if(this.isGameOver) {
 		this.onGameOver();
@@ -64,6 +74,12 @@ Game.prototype.update = function() {
 	this.boxes.forEach(function(box){
 		box.move();
 	});
+	//p
+	this.pizza.forEach(function(pizza){
+		pizza.move();
+	});
+	//p
+
 };
 
 Game.prototype.clear = function() {
@@ -80,6 +96,11 @@ Game.prototype.draw = function() {
 	this.boxes.forEach(function(box){
 		box.draw();
 	});
+	//p
+	this.pizza.forEach(function(pizza){
+		pizza.draw();
+	});
+	//
 
 };
 
@@ -133,7 +154,7 @@ Game.prototype.checkCollisionsBox = function() {
 			} else {
 				this.coins++;
 
-				if(this.coins === 5) {
+				if(this.coins === 7) {
 					this.isWin = true;
 				}
 
@@ -143,6 +164,33 @@ Game.prototype.checkCollisionsBox = function() {
 			}
 	});	
 };
+
+////p
+Game.prototype.checkCollisionsPizza = function() {
+	this.pizza.forEach((pizza, index) => {
+
+		var rightLeft = this.player.x + this.player.width >= pizza.x;
+		var leftRight = this.player.x <= pizza.x + pizza.width;
+		var bottomTop = this.player.y + this.player.height >= pizza.y;
+		var topBottom = this.player.y <= pizza.y + pizza.height;
+
+		if (rightLeft && leftRight && bottomTop && topBottom){
+			this.pizza.splice(index, 1);
+
+			this.player.lives++;
+			
+			var liveScore = document.querySelector('#liveCount');
+				liveScore.innerHTML = 'Lives : '  + this.player.lives;
+
+			if(this.player.lives === 0) {
+				this.isGameOver = true;
+			};
+		};
+	});	
+	
+};
+
+///
 
 
 Game.prototype.gameOverCallback = function(callback) {
