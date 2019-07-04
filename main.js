@@ -12,13 +12,15 @@ function main() {
   function createSplashScreen(){
 		
 		var splashScreen = buildDom(`
-      <section id = "screen">
+      <section id="screen"class="main-page">
+        
         <h1>Foodie Yoshi</h1>
         <h3>Instructions</h3>
         <p>1- With each Surprise Box you can either lose a life or Win a Coin.</p>
         <p>2- Do not let the Eggs touch you!</p>
         <p>3- Earn extra Lives eating the Pizzas</p>
         <p>4- Collect 7 Coins to WIN!</p>
+        
         <button>Start Game</button>
       </section>
     `);
@@ -61,8 +63,10 @@ function main() {
     		gameInstance.player.setDirection(1);
     		} else if(event.key === 'ArrowLeft'){
  				gameInstance.player.setDirection(-1);
-				};	
+        };	
+        event.preventDefault();
     });
+
     //setTimeout(createGameWinScreen, 3000);
   };
 	
@@ -70,9 +74,10 @@ function main() {
   function createGameOverScreen(){
 
     var gameOverScreen = buildDom(`
-      <section id = "screen">
-      	<h1>Game Over</h1>
-      	<button>Restart</button>
+
+      <section id="screen" class="game-over">
+
+      	<button class="button-over">Restart</button>
       </section>
     `);
                 
