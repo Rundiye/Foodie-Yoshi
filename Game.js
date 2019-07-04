@@ -71,7 +71,9 @@ Game.prototype.clear = function() {
 };
 
 Game.prototype.draw = function() {
-	this.player.draw();
+	
+  this.player.draw();
+
 	this.enemies.forEach(function(enemy) {
 		enemy.draw();
 	});

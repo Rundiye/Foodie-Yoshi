@@ -8,8 +8,8 @@ function Box(canvas, randomX, isPoison) {
 	this.velocity = 5;
 	this.direction = 1;
 	this.color = 'green';
-	this.width = 90;
-	this.height = 90;
+	this.width = 70;
+	this.height = 70;
 	this.isPoison = isPoison;
 };
 
@@ -18,9 +18,9 @@ Box.prototype.move = function() {
 };
 
 Box.prototype.draw = function() {
-	var pizza = new Image();
-  this.type === 'pizza';
-  pizza.src = 'images/pizza.png';
+	var surprise = new Image();
+  this.type === 'surprise';
+  surprise.src = 'images/UIHere.png';
   
-  this.ctx.drawImage(pizza, this.x, this.y, this.width, this.height);
+  this.ctx.drawImage(surprise, this.x, this.y, this.width, this.height);
 };

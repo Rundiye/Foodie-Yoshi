@@ -10,7 +10,6 @@ function Player(canvas) {
 	this.lives = 3;
 	this.direction = 1;
 	this.velocity = 5;
-	this.color = 'orange';
 
 	
 };
@@ -24,18 +23,17 @@ Player.prototype.move = function() {
  } else if (this.x < 0) {
 	return this.direction = 1;
  }
-
 };
 
 Player.prototype.draw = function() {
 	
 var yoshi = new Image();
   this.type === 'yoshi';
-  yoshi.src = 'images/yoshi-pic.png';
+	yoshi.src = 'images/yoshi-pic.png';
+ 
   this.y = (this.canvas.height) - (this.height /2) - this.height;
-
   this.ctx.drawImage(yoshi, this.x, this.y, this.width, this.height);
-};
+  };
 
 Player.prototype.setDirection = function(newDirection) {
 	this.direction =  newDirection;
