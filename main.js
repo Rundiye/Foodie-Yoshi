@@ -5,9 +5,10 @@ function main() {
 	var mainElement = document.querySelector('#main-page');
 
   function buildDom(html){
-      mainElement.innerHTML = html;
-      return mainElement;
+    mainElement.innerHTML = html;
+    return mainElement;
   };
+
 
   function createSplashScreen(){
 		
@@ -31,6 +32,7 @@ function main() {
     startButton.addEventListener('click', createGameScreen);
     };
 
+
   function createGameScreen(){
         
     var gameScreen = buildDom(`
@@ -41,11 +43,8 @@ function main() {
       </ul>
 				<canvas class="canvas" width="700" height="800">
 				</canvas>
-				
-			</ul>
     `);
-
-		
+	
 		var canvas = document.querySelector('canvas');
     var gameInstance = new Game(canvas);
 
@@ -55,8 +54,6 @@ function main() {
     gameInstance.startGame();
     
     
-
-
 		document.addEventListener('keyup', function(event){
 			gameInstance.player.setDirection(0);
 		});
@@ -70,8 +67,6 @@ function main() {
         };	
         event.preventDefault();
     });
-
-    //setTimeout(createGameWinScreen, 3000);
   };
 	
 
@@ -80,7 +75,6 @@ function main() {
     var gameOverScreen = buildDom(`
 
       <section id="screen" class="game-over">
-
       	<button class="button-over">Restart</button>
       </section>
     `);
@@ -91,6 +85,7 @@ function main() {
             
     createSplashScreen(); 
 
+
   function createGameWinScreen(){
 
     var gameWinScreen = buildDom(`
@@ -98,14 +93,13 @@ function main() {
       <img src="images/win-pic.jpg" alt="win-image">
       <button>Restart</button>
       </section>
-      `);
+    `);
                   
     var buttonRestart = gameWinScreen.querySelector('button');
     buttonRestart.addEventListener('click', createGameScreen);
     };
               
     createSplashScreen(); 
-    
 };
 
 

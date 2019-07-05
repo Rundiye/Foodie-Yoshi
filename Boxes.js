@@ -21,6 +21,5 @@ Box.prototype.draw = function() {
 	var surprise = new Image();
   this.type === 'surprise';
   surprise.src = 'images/UIHere.png';
-  
   this.ctx.drawImage(surprise, this.x, this.y, this.width, this.height);
 };

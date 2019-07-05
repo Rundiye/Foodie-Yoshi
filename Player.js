@@ -6,22 +6,20 @@ function Player(canvas) {
 	this.height = 110;
 	this.width = 110;
 	this.x = (this.canvas.width/2);;   
-	this.y = (this.canvas.height) - (this.height /2) - this.height;
+	this.y = this.canvas.height - this.height;
 	this.lives = 3;
 	this.direction = 1;
 	this.velocity = 5;
-
-	
 };
 
 Player.prototype.move = function() {
 	this.x = this.x + this.direction * this.velocity;
 
- if (this.x + this.width >= this.canvas.width) {
-	return this.direction = -1;
+	if (this.x + this.width >= this.canvas.width) {
+		return this.direction = -1;
 
- } else if (this.x < 0) {
-	return this.direction = 1;
+	} else if (this.x < 0) {
+		return this.direction = 1;
  }
 };
 
@@ -31,11 +29,11 @@ var yoshi = new Image();
   this.type === 'yoshi';
 	yoshi.src = 'images/yoshi-pic.png';
  
-  this.y = (this.canvas.height) - (this.height /2) - this.height;
+  this.y = this.canvas.height - this.height;
   this.ctx.drawImage(yoshi, this.x, this.y, this.width, this.height);
   };
 
-Player.prototype.setDirection = function(newDirection) {
+	Player.prototype.setDirection = function(newDirection) {
 	this.direction =  newDirection;
 };
 

@@ -20,37 +20,35 @@ function Game(canvas) {
 	this.coinSong = new Audio('sounds/mario-bros-coin.mp3');
 	this.liveSong = new Audio('sounds/mario-bros vida.mp3');
 	this.ouchYoshi = new Audio('sounds/yoshi-owowowow.mp3');
-	
-	
 };
 
+
 Game.prototype.startGame = function() {
-	this.startGameSong.play();
 
 	this.player = new Player(this.canvas);
 
 	var loop = () => {    
+		this.startGameSong.play();
 
 		this.cont++;
 		if(Math.random() > 0.98) {
-			var randomX = Math.random() * this.canvas.height - 20;   
+			var randomX = Math.random() * this.canvas.width - 50;
 			var newEnemy = new Enemy(this.canvas, randomX);
 			this.enemies.push(newEnemy);
 		};
 	
 		if(this.cont===200) {
-			var randomX = Math.random() * this.canvas.height - 20;   
+			var randomX = Math.random() * this.canvas.width - 80;   
 			var newPizza = new Pizza(this.canvas, randomX);
 			this.pizza.push(newPizza);
 		};
 
-		//
 		if(this.cont===300) {
-		var randomX = Math.random() * this.canvas.height - 20;   
-		var isPoison = Math.random() > 0.6 ? true : false;
-		var newBox = new Box(this.canvas, randomX, isPoison);
-		this.boxes.push(newBox);
-		this.cont = 0;
+			var randomX = Math.random() * this.canvas.width - 70;   
+			var isPoison = Math.random() > 0.6 ? true : false;
+			var newBox = new Box(this.canvas, randomX, isPoison);
+			this.boxes.push(newBox);
+			this.cont = 0;
 		};
 		
 		this.update();
@@ -71,10 +69,10 @@ Game.prototype.startGame = function() {
 		requestAnimationFrame(loop);
 	};
 
-
 	};
 	loop();
 };
+
 
 Game.prototype.update = function() {
 	this.player.move();
@@ -84,13 +82,11 @@ Game.prototype.update = function() {
 	this.boxes.forEach(function(box){
 		box.move();
 	});
-	//p
 	this.pizza.forEach(function(pizza){
 		pizza.move();
 	});
-	//p
-
 };
+
 
 Game.prototype.clear = function() {
 	this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -106,12 +102,9 @@ Game.prototype.draw = function() {
 	this.boxes.forEach(function(box){
 		box.draw();
 	});
-	//p
 	this.pizza.forEach(function(pizza){
 		pizza.draw();
 	});
-	//
-
 };
 
 
@@ -136,8 +129,7 @@ Game.prototype.checkCollisions = function() {
 				this.isGameOver = true;
 			};
 		};
-	});	
-	
+	});		
 };
 
 
@@ -154,26 +146,22 @@ Game.prototype.checkCollisionsBox = function() {
 
 			if(box.isPoison){
 				this.player.lives--;
-
 				var liveScore = document.querySelector('#liveCount');
 				liveScore.innerHTML = 'Lives : '  + this.player.lives;
-
 				if(this.player.lives === 0) {
 					this.isGameOver = true;
 				}
-
 			} else {
 				this.coins++;
 				this.coinSong.play();
+					if(this.coins === 7) {
+						this.isWin = true;
+					}
 
-				if(this.coins === 1) {
-					this.isWin = true;
-				}
-
-				var coinCount = document.querySelector('#coinCount');
-				coinCount.innerHTML = 'Coin Score : ' + this.coins;				
+			var coinCount = document.querySelector('#coinCount');
+			coinCount.innerHTML = 'Coin Score : ' + this.coins;				
 			};
-			}
+		};
 	});	
 };
 
@@ -200,15 +188,12 @@ Game.prototype.checkCollisionsPizza = function() {
 			};
 		};
 	});	
-	
 };
-
 
 
 Game.prototype.gameOverCallback = function(callback) {
 	this.onGameOver = callback;
 };
-
 
 Game.prototype.gameWinCallback = function(callback) {
 	this.onWin = callback;
