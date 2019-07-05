@@ -17,7 +17,6 @@ Player.prototype.move = function() {
 
 	if (this.x + this.width >= this.canvas.width) {
 		return this.direction = -1;
-
 	} else if (this.x < 0) {
 		return this.direction = 1;
  }

@@ -32,19 +32,19 @@ Game.prototype.startGame = function() {
 
 		this.cont++;
 		if(Math.random() > 0.97) {
-			var randomX = Math.random() * this.canvas.width - 50;
+			var randomX = Math.random() * (this.canvas.width - 50);
 			var newEnemy = new Enemy(this.canvas, randomX);
 			this.enemies.push(newEnemy);
 		};
 	
 		if(this.cont===200) {
-			var randomX = Math.random() * this.canvas.width - 80;   
+			var randomX = Math.random() * (this.canvas.width - 80);   
 			var newPizza = new Pizza(this.canvas, randomX);
 			this.pizza.push(newPizza);
 		};
 
 		if(this.cont===300) {
-			var randomX = Math.random() * this.canvas.width - 70;   
+			var randomX = Math.random() * (this.canvas.width - 70);   
 			var isPoison = Math.random() > 0.6 ? true : false;
 			var newBox = new Box(this.canvas, randomX, isPoison);
 			this.boxes.push(newBox);
@@ -116,6 +116,10 @@ Game.prototype.checkCollisions = function() {
 		var bottomTop = this.player.y + this.player.height >= enemy.y;
 		var topBottom = this.player.y <= enemy.y + enemy.height;
 
+		if(enemy.y > this.canvas.height){
+			this.enemies.splice(index, 1);
+		};
+
 		if (rightLeft && leftRight && bottomTop && topBottom){
 			this.enemies.splice(index, 1);
 
@@ -141,11 +145,16 @@ Game.prototype.checkCollisionsBox = function() {
 		var bottomTop = this.player.y + this.player.height >= box.y;
 		var topBottom = this.player.y <= box.y + box.height;
 
+		if(box.y > this.canvas.height){
+			this.boxes.splice(index, 1);
+		};
+
 		if (rightLeft && leftRight && bottomTop && topBottom){
 			this.boxes.splice(index, 1);
 
 			if(box.isPoison){
 				this.player.lives--;
+				this.ouchYoshi.play();
 				var liveScore = document.querySelector('#liveCount');
 				liveScore.innerHTML = 'Lives : '  + this.player.lives;
 				if(this.player.lives === 0) {
@@ -173,6 +182,10 @@ Game.prototype.checkCollisionsPizza = function() {
 		var leftRight = this.player.x <= pizza.x + pizza.width;
 		var bottomTop = this.player.y + this.player.height >= pizza.y;
 		var topBottom = this.player.y <= pizza.y + pizza.height;
+
+		if(pizza.y > this.canvas.height){
+			this.pizza.splice(index, 1);
+		};
 
 		if (rightLeft && leftRight && bottomTop && topBottom){
 			this.pizza.splice(index, 1);
