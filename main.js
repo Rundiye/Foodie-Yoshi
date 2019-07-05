@@ -39,7 +39,7 @@ function main() {
       <section id = "screen" class="game-screen">
       <ul class ="score">
       <li id="coinCount"> Coin Score : 0</li>
-      <li id="liveCount"> Lives : 3</li>
+      <li id="liveCount">Lives : 3</li>
       </ul>
 				<canvas class="canvas" width="700" height="800">
 				</canvas>

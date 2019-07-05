@@ -31,7 +31,7 @@ Game.prototype.startGame = function() {
 		this.startGameSong.play();
 
 		this.cont++;
-		if(Math.random() > 0.98) {
+		if(Math.random() > 0.97) {
 			var randomX = Math.random() * this.canvas.width - 50;
 			var newEnemy = new Enemy(this.canvas, randomX);
 			this.enemies.push(newEnemy);
