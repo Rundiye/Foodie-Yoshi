@@ -9,7 +9,7 @@ function Player(canvas) {
 	this.y = this.canvas.height - this.height;
 	this.lives = 3;
 	this.direction = 1;
-	this.velocity = 5;
+	this.velocity = 6;
 };
 
 Player.prototype.move = function() {
