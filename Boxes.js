@@ -8,8 +8,8 @@ function Box(canvas, randomX, isPoison) {
 	this.velocity = 5;
 	this.direction = 1;
 	this.color = 'green';
-	this.width = 70;
-	this.height = 70;
+	this.width = 60;
+	this.height = 60;
 	this.isPoison = isPoison;
 };
 

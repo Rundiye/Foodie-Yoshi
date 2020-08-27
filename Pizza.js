@@ -7,8 +7,8 @@ function Pizza(canvas, randomX) {
 	this.y = 0;
 	this.velocity = 5;
 	this.direction = 1;
-	this.width = 80;
-	this.height = 80;
+	this.width = 65;
+	this.height = 65;
 };
 
 Pizza.prototype.move = function() {

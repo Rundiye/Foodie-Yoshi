@@ -14,17 +14,20 @@ function main() {
 		
 		var splashScreen = buildDom(`
       <section id="screen"class="main-page">
-    
+
+      
       <section class="instructions"> 
-        
-        <h3>Instructions</h3>
-        <p>1. With each Surprise Box you can either lose a Live or Win a Coin</p>
-        <p>2. Do not let the Eggs touch you!</p>
-        <p>3. Earn extra Lives eating Pizzas</p>
-        <p>4. Collect 7 Coins to WIN!</p>
-        <p class="command"> Commands <- Left  Right -></p>
+        <h2 class="typing">Happy Birthday David! ♥</h2>
+        <h2 class="dark-grey">Follow the instructions to win the game and collect your gifts!</h2>
+        <h3 class="underline">Instructions</h3>
+        <p>1. Collect 7 Coins to WIN!</p>
+        <p>2. Do not let the <img src="images/brick2.png" width="25px"> touch you! You'll lose 1 life</p>
+        <p>3. Earn extra lifes eating <img src="images/pizza.png" width="35px"> :) </p>
+        <p>4. With each <img src="images/UIHere.png" width="30px"> you can either lose a life or Win a Coin</p>
+        <p class="good-luck">GOOD LUCK!</p>
+        <div class="command"><img src="images/commands.png" class="commands"></div>
         </section>
-        <button class="button-start">New Game</button>
+        <button class="button-start">PLAY</button>
       </section>
     `);
     
@@ -36,12 +39,12 @@ function main() {
   function createGameScreen(){
         
     var gameScreen = buildDom(`
-      <section id = "screen" class="game-screen">
-      <ul class ="score">
+      <section id="screen" class="game-screen">
+      <ul class="score">
       <li id="coinCount"> Coin Score : 0</li>
-      <li id="liveCount">Lives : 3</li>
+      <li id="liveCount">Life : 3</li>
       </ul>
-				<canvas class="canvas" width="700" height="800">
+				<canvas class="canvas" width="600" height="550">
 				</canvas>
     `);
 	
@@ -75,7 +78,7 @@ function main() {
     var gameOverScreen = buildDom(`
 
       <section id="screen" class="game-over">
-      	<button class="button-over">Restart</button>
+      	<button class="button-over">Try again</button>
       </section>
     `);
                 
@@ -89,9 +92,12 @@ function main() {
   function createGameWinScreen(){
 
     var gameWinScreen = buildDom(`
-      <section id = "screen" class="win-screen">
-      <img src="images/win-pic.jpg" alt="win-image">
-      <button>Restart</button>
+      <section id="screen" class="win-screen">
+      <img src="images/win-pic.jpg" alt="win-image" width="250px">
+      <h2 class="dark-grey">I feel very lucky that you have chosen to celebrate your birthday with me!</h2>
+      <h3 class="dark-grey">Noe you can open your <a href="https://rundiye.github.io/birthday-david/" class="no-style" target="_blank"><strong>gift</strong></a>! Hope you like it!</h3>
+      <h3>Love, Jundi <img src="images/heart.png" width="30px"></h3>
+      <button>Play again</button>
       </section>
     `);
                   

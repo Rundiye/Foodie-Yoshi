@@ -163,7 +163,7 @@ Game.prototype.checkCollisionsBox = function() {
 			} else {
 				this.coins++;
 				this.coinSong.play();
-					if(this.coins === 7) {
+					if(this.coins === 1) {
 						this.isWin = true;
 					}
 
@@ -194,7 +194,7 @@ Game.prototype.checkCollisionsPizza = function() {
 			this.liveSong.play();
 			
 			var liveScore = document.querySelector('#liveCount');
-				liveScore.innerHTML = 'Lives : '  + this.player.lives;
+				liveScore.innerHTML = 'Life : '  + this.player.lives;
 
 			if(this.player.lives === 0) {
 				this.isGameOver = true;

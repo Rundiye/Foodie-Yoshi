@@ -13,21 +13,28 @@ body {
 /* ---- typography ---- */
 
 body {
-	font-family: Courier New, Courier, monospace;
+	font-family: Roboto, Lato, Open Sans;
 	font-size: 16px;
 	line-height: 80%;	
 }
 
 h1 {
 	font-size: 7em;
-	color: white;;
+	color: white;
 	margin-bottom: 100px;
 }
 
-h3 {
-	font-size: 2em;
+.underline {
+	font-size: 1.5em;
 	color: white;
 	text-decoration: underline;
+}
+
+.good-luck {
+	text-align: right;
+	color: teal;
+	font-weight: 600;
+	padding-right: 1em;
 }
 
 p {
@@ -46,8 +53,12 @@ p {
 	flex-direction: column;
 }
 
+.small-font {
+	font-size: 1.1em;
+}
+
 .main-page {
-	background-image:url('images/Background-y2.jpg');
+	background-image:url('images/main-image.jpeg');
 	background-size: cover;
 }
 
@@ -69,28 +80,34 @@ p {
 }
 
 button {
-	font-size: 1.5em;
-	color:black;
+	font-size: 1.2em;
+	color: darkslategray;
+	font-weight: 600;
 	border-radius: 10%;
-	border-style: 2px solid white;
+	border-style: 1px solid white;
 	padding: 7px 15px;
-	margin-top: 100px;
+	margin-top: 2em;
 	background-color: white;
+	width: 8em;
+	border-radius: 20px;
+}
+
+.commands {
+	width: 4em;
 }
 
 button:hover {
-	transform: scale(1.2) rotate(360deg);
-	transition: all 0.5s;
-}
-
-.button-over {
-	position: absolute;
-	top: 55%;
+	transform: scale(1.1);
 }
 
 .button-start {
-	position: absolute;
-	top: 69%;
+	border-radius: 20px;
+	color: darkslategray;
+	font-weight: 600;
+}
+
+.no-style {
+	text-decoration: none;
 }
 
 .score {
@@ -98,7 +115,7 @@ button:hover {
 	align-content: space-around;
 	justify-items: flex-start;
 	flex-direction: row;
-	font-size: 2em;
+	font-size: 1em;
 	color: green;
 	text-decoration-style: none;
 	list-style-type: none;
@@ -110,13 +127,12 @@ li {
 }
 
 .instructions {
-	background-color: lightskyblue	;
+	background-color: lightblue	;
+	opacity: 0.8;
 	padding: 10px 15px;
 	line-height: 20px;
 	border: 3px solid white;
-	border-style: dashed;
-	position: absolute;
-	top: 42%;
+	padding: 1em 2em;
 }
 
 .win-screen {
@@ -129,3 +145,32 @@ li {
 	font-size: 1.5em;
 }
 
+.dark-grey {
+	color: darkslategray;
+}
+
+/* Animation */
+.typing {
+	font-size: 2em;
+	padding-bottom: 0.5em;
+	margin-bottom: 0;
+	color: darkslategray;
+	white-space: nowrap;
+  overflow: hidden;   
+  animation: animated-text 4s steps(29,end) 1s 1 normal both,
+             animated-cursor 600ms steps(29,end) infinite;
+}
+
+/* text animation */
+
+@keyframes animated-text{
+  from{width: 0;}
+  to{width: 472px;}
+}
+
+/* cursor animations */
+
+@keyframes animated-cursor{
+  from{border-right-color: rgba(0,255,0,.75);}
+  to{border-right-color: transparent;}
+}
