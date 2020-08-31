@@ -13,7 +13,7 @@ function main() {
   function createSplashScreen(){
 		
 		var splashScreen = buildDom(`
-      <section id="screen"class="main-page">
+      <section id="screen" class="main-page">
 
       
       <section class="instructions"> 
@@ -92,12 +92,20 @@ function main() {
   function createGameWinScreen(){
 
     var gameWinScreen = buildDom(`
-      <section id="screen" class="win-screen">
-      <img src="images/win-pic.jpg" alt="win-image" width="250px">
-      <h2 class="dark-grey">I feel very lucky that you have chosen to celebrate your birthday with me!</h2>
-      <h3 class="dark-grey">Noe you can open your <a href="https://rundiye.github.io/birthday-david/" class="no-style" target="_blank"><strong>gift</strong></a>! Hope you like it!</h3>
-      <h3>Love, Jundi <img src="images/heart.png" width="30px"></h3>
-      <button>Play again</button>
+      <section id="" class="win-screen">
+      <div class="win-text">
+        <h2 class="white">YOU WON!</h2>
+        <h3 class="dark-grey">I feel very lucky that you have chosen to celebrate your birthday with me!</h3>
+        <h3 class="dark-grey">Now click on the gift! Hope you like it!</h3>
+        <br>
+        <h3>Love, Jundi <img src="images/heart.png" width="30px"></h3>
+      </div>
+      <div class=win-gift>
+        <a href="https://rundiye.github.io/birthday-david/" class="no-style" target="_blank" title="CLICK ME!">
+          <img src="images/gift.png" width="135px">
+        </a>
+        <button>Play again</button>
+      </div>
       </section>
     `);
                   
