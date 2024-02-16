@@ -76,7 +76,6 @@ gameWinScreen: There is a button to restart the game, which redirects the user t
 ### Git
 
 [Link Repo] https://github.com/Rundiye/Foodie-Yoshi
-[Link Deploy] https://rundiye.github.io/Foodie-Yoshi/
 
 ### Slides
 
